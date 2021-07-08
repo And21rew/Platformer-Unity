@@ -10,12 +10,17 @@ public class Player : MonoBehaviour
     public Transform checkGround;
     bool isGrounded;
     Animator anim;
+    int curHp;
+    int maxHP = 3;
+    bool isHit = false;
+    public Main main;
     
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        curHp = maxHP;
     }
 
     // Update is called once per frame
@@ -53,11 +58,49 @@ public class Player : MonoBehaviour
             transform.localRotation = Quaternion.Euler(0, 180, 0);
     }
 
+    // Проверяем землю под ногами и ставим анимацию прыжка/падения, если земли нет
     void GroundCheck()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(checkGround.position, 0.2f);
         isGrounded = colliders.Length > 1;
         if (!isGrounded)
             anim.SetInteger("State", 3);
+    }
+
+    // Пересчитываем здоровье в +/-
+    public void RecountHp(int deltaHp)
+    {
+        curHp += deltaHp;
+        if (deltaHp < 0)
+        {
+            StopCoroutine(OnHit());
+            isHit = true;
+            StartCoroutine(OnHit());
+        }
+        if (curHp <= 0)
+        {
+            GetComponent<CapsuleCollider2D>().enabled = false;
+            Invoke("Lose", 1.5f);
+        }
+    }
+
+    // Красим персонажа в красный и обратно при ударе
+    IEnumerator OnHit()
+    {
+        if(isHit)
+            GetComponent<SpriteRenderer>().color = new Color(1f, GetComponent<SpriteRenderer>().color.g - 0.04f, GetComponent<SpriteRenderer>().color.b - 0.04f);
+        else
+            GetComponent<SpriteRenderer>().color = new Color(1f, GetComponent<SpriteRenderer>().color.g + 0.04f, GetComponent<SpriteRenderer>().color.b + 0.04f);
+        if (GetComponent<SpriteRenderer>().color.g == 1f)
+            StopCoroutine(OnHit());
+        if (GetComponent<SpriteRenderer>().color.g <= 0)
+            isHit = false;
+        yield return new WaitForSeconds(0.02f);
+        StartCoroutine(OnHit());
+    }
+
+    void Lose()
+    {
+        main.GetComponent<Main>().Lose();
     }
 }
