@@ -34,6 +34,10 @@ public class airPatrol : MonoBehaviour
     IEnumerator Waiting()
     {
         yield return new WaitForSeconds(waitTime);
+        if (transform.rotation.y == 0)
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        else
+            transform.eulerAngles = new Vector3(0, 0, 0);
         canGo = true;
     }
 }
