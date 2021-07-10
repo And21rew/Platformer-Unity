@@ -14,7 +14,11 @@ public class Player : MonoBehaviour
     int maxHP = 3;
     bool isHit = false;
     public Main main;
-    
+    public bool key = false;
+    bool canTP = true;
+    public bool inWater = false;
+    public bool inLava = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,29 +30,50 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GroundCheck();
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-            rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
-
-        if (Input.GetAxis("Horizontal") == 0 && (isGrounded))
+        if (inLava)
         {
-            anim.SetInteger("State", 1);
+            anim.SetInteger("State", 4);
+            isGrounded = true;
+            if (Input.GetAxis("Horizontal") != 0)
+                Flip();
+            if (Input.GetKeyDown(KeyCode.Space))
+                rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
+        }
+        else if (inWater)
+        {
+            anim.SetInteger("State", 4);
+            isGrounded = true;
+            if (Input.GetAxis("Horizontal") != 0)
+                Flip();
+            if (Input.GetKeyDown(KeyCode.Space))
+                rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
         }
         else
         {
-            Flip();
-            if (isGrounded)
+            GroundCheck();
+            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+                rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
+
+            if (Input.GetAxis("Horizontal") == 0 && (isGrounded))
             {
-                anim.SetInteger("State", 2);
+                anim.SetInteger("State", 1);
+            }
+            else
+            {
+                Flip();
+                if (isGrounded)
+                    anim.SetInteger("State", 2);
             }
         }
     }
 
+    // Движение влево или вправо
     void FixedUpdate()
     {
         rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y);
     }
 
+    // Поворот влево или вправо
     void Flip()
     {
         if (Input.GetAxis("Horizontal") > 0)
@@ -99,8 +124,36 @@ public class Player : MonoBehaviour
         StartCoroutine(OnHit());
     }
 
+    // Перезапуск уровня, если кончилась жизнь
     void Lose()
     {
         main.GetComponent<Main>().Lose();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Key")
+        {
+            Destroy(collision.gameObject);
+            key = true;
+        }
+
+        if (collision.gameObject.tag == "Door")
+        {
+            if (collision.gameObject.GetComponent<Door>().isOpen && canTP)
+            {
+                collision.gameObject.GetComponent<Door>().Teleport(gameObject);
+                canTP = false;
+                StartCoroutine(TPwait());            
+            }
+            else if (key)
+                collision.gameObject.GetComponent<Door>().Unlock();
+        }
+    }
+
+    IEnumerator TPwait()
+    {
+        yield return new WaitForSeconds(1f);
+        canTP = true;
     }
 }
