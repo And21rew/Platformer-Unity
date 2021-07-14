@@ -6,6 +6,14 @@ TagManager:
   tags:
   - Key
   - Door
+  - Ladder
+  - Trampoline
+  - MarkBox
+  - Coin
+  - Heart
+  - Mushroom
+  - BlueGem
+  - GreenGem
   layers:
   - Default
   - TransparentFX
