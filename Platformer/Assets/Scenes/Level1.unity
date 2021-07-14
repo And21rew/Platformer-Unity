@@ -4166,10 +4166,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 468e9dede548a4745bf2ab2191e0dc54, type: 3}
   - {fileID: 21300000, guid: 8e2d32cf42df55c4f90571b430364bbd, type: 3}
   - {fileID: 21300000, guid: ef4cb0735b5c78b4892baf4f9a90385d, type: 3}
-  - {fileID: 21300000, guid: ff609ad83a317c347a908c01fca1eda5, type: 3}
-  - {fileID: 21300000, guid: 4735e38a7d9c04a4a937cc2d5674eeeb, type: 3}
-  - {fileID: 21300000, guid: d752ad6018f03bc439585ef89645bacf, type: 3}
-  - {fileID: 21300000, guid: 71f56fb8fe0e6a543853a28c0588c508, type: 3}
   is_hp: {fileID: 21300000, guid: 77aaacae8bd6a544ab95a2337e353b74, type: 3}
   no_hp: {fileID: 21300000, guid: fc1623bac91485945832fc5046a6ccbe, type: 3}
   is_bluegem: {fileID: 21300000, guid: 0978451f9a8520240b13a608504483ae, type: 3}
@@ -4186,6 +4182,7 @@ MonoBehaviour:
   heart: {fileID: 1027573542}
   blue: {fileID: 253675394}
   green: {fileID: 77750838}
+  maxCountBonus: 5
 --- !u!4 &525318260 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4651814206508417829, guid: 6b7681fd8aebcf94e80d83951928346e, type: 3}

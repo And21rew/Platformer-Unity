@@ -14,6 +14,7 @@ public class Inventory : MonoBehaviour
     public Image hp_img, bluegem_img, greengem_img, key_img;
     public Player player;
     public UnityEngine.UI.Button heart, blue, green;
+    public int maxCountBonus = 5;
 
     private void Start()
     {
@@ -41,23 +42,32 @@ public class Inventory : MonoBehaviour
 
     public void Add_hp()
     {
-        hp++;
-        hp_img.sprite = is_hp;
-        hp_img.transform.GetChild(0).GetComponent<Image>().sprite = numbers[hp];
+        if (hp < maxCountBonus)
+        {
+            hp++;
+            hp_img.sprite = is_hp;
+            hp_img.transform.GetChild(0).GetComponent<Image>().sprite = numbers[hp];
+        }
     }
 
     public void Add_bluegem()
     {
-        bluegem++;
-        bluegem_img.sprite = is_bluegem;
-        bluegem_img.transform.GetChild(0).GetComponent<Image>().sprite = numbers[bluegem];
+        if (bluegem < maxCountBonus)
+        {
+            bluegem++;
+            bluegem_img.sprite = is_bluegem;
+            bluegem_img.transform.GetChild(0).GetComponent<Image>().sprite = numbers[bluegem];
+        }
     }
 
     public void Add_greengem()
     {
-        greengem++;
-        greengem_img.sprite = is_greengem;
-        greengem_img.transform.GetChild(0).GetComponent<Image>().sprite = numbers[greengem];
+        if (greengem < maxCountBonus)
+        {
+            greengem++;
+            greengem_img.sprite = is_greengem;
+            greengem_img.transform.GetChild(0).GetComponent<Image>().sprite = numbers[greengem];
+        }
     }
 
     public void Add_key()
