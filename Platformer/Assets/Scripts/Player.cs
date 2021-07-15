@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     public GameObject blueGem, greenGem;
     int gemCount = 0;
     public Inventory inventory;
+    public SoundEffect soundEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -58,8 +59,10 @@ public class Player : MonoBehaviour
         {
             GroundCheck();
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            {
                 rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
-
+            }
+                
             if (Input.GetAxis("Horizontal") == 0 && (isGrounded) && (!isClimb))
             {
                 anim.SetInteger("State", 1);
@@ -176,6 +179,7 @@ public class Player : MonoBehaviour
         {
             Destroy(collision.gameObject);
             coins++;
+            soundEffect.PlayCoinSound();
         }
 
         if (collision.gameObject.tag == "Heart")

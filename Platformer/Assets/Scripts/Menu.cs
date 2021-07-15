@@ -10,6 +10,8 @@ public class Menu : MonoBehaviour
     public UnityEngine.UI.Button heart, bluegm, greengm;
     public Text coinText, heartText, bluegemText, greengemText;
     public int maxCountBonus = 5;
+    public Slider musicSlider, soundSlider;
+    public Text musicSliderText, soundSliderText;
 
     // Start is called before the first frame update
     void Start()
@@ -31,11 +33,26 @@ public class Menu : MonoBehaviour
 
         if (!PlayerPrefs.HasKey("greengem"))
             PlayerPrefs.SetInt("greengem", 0);
+
+        if (!PlayerPrefs.HasKey("musicvolume"))
+            PlayerPrefs.SetInt("musicvolume", 5);
+
+        if (!PlayerPrefs.HasKey("soundvolume"))
+            PlayerPrefs.SetInt("soundvolume", 10);
+
+        musicSlider.value = PlayerPrefs.GetInt("musicvolume");
+        soundSlider.value = PlayerPrefs.GetInt("soundvolume");
     }
 
     // Update is called once per frame
     void Update()
     {
+        PlayerPrefs.SetInt("musicvolume", (int)musicSlider.value);
+        musicSliderText.text = musicSlider.value.ToString();
+
+        PlayerPrefs.SetInt("soundvolume", (int)soundSlider.value);
+        soundSliderText.text = soundSlider.value.ToString();
+
         if (PlayerPrefs.HasKey("coins"))
             coinText.text = PlayerPrefs.GetInt("coins").ToString();
         else

@@ -12,6 +12,7 @@ public class Main : MonoBehaviour
     public GameObject WinScreen;
     public GameObject LoseScreen;
     public GameObject inventoryPanel;
+    public SoundEffect soundEffect;
 
     public void ReloadLevel()
     {
@@ -49,6 +50,7 @@ public class Main : MonoBehaviour
 
     public void Win()
     {
+        soundEffect.PlayWinSound();
         Time.timeScale = 0f;
         player.enabled = false;
         WinScreen.SetActive(true);
@@ -67,6 +69,7 @@ public class Main : MonoBehaviour
 
     public void Lose()
     {
+        soundEffect.PlayLoseSound();
         Time.timeScale = 0f;
         player.enabled = false;
         LoseScreen.SetActive(true);
