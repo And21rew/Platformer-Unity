@@ -12,6 +12,7 @@ public class Menu : MonoBehaviour
     public int maxCountBonus = 5;
     public Slider musicSlider, soundSlider;
     public Text musicSliderText, soundSliderText;
+    public UnityEngine.UI.Button dino1, dino2, dino3;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,24 @@ public class Menu : MonoBehaviour
                 else
                     lvls[i].interactable = false;
             }
+
+        if (PlayerPrefs.HasKey("Lvl"))
+        {
+            if (PlayerPrefs.GetInt("Lvl") >= 3)
+                dino1.interactable = true;
+            else
+                dino1.interactable = false;
+
+            if (PlayerPrefs.GetInt("Lvl") >= 6)
+                dino1.interactable = true;
+            else
+                dino1.interactable = false;
+
+            if (PlayerPrefs.GetInt("Lvl") >= 9)
+                dino1.interactable = true;
+            else
+                dino1.interactable = false;
+        }
 
         if (!PlayerPrefs.HasKey("hp"))
             PlayerPrefs.SetInt("hp", 0);

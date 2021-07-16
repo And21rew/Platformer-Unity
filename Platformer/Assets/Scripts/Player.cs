@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     int gemCount = 0;
     public Inventory inventory;
     public SoundEffect soundEffect;
+    public float normalSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +42,8 @@ public class Player : MonoBehaviour
         {
             anim.SetInteger("State", 4);
             isGrounded = true;
-            if (Input.GetAxis("Horizontal") != 0)
+            //if (Input.GetAxis("Horizontal") != 0)
+            if (speed != 0)
                 Flip();
             if (Input.GetKeyDown(KeyCode.Space))
                 rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
@@ -50,7 +52,8 @@ public class Player : MonoBehaviour
         {
             anim.SetInteger("State", 4);
             isGrounded = true;
-            if (Input.GetAxis("Horizontal") != 0)
+            //if (Input.GetAxis("Horizontal") != 0)
+            if (speed != 0)
                 Flip();
             if (Input.GetKeyDown(KeyCode.Space))
                 rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
@@ -62,8 +65,9 @@ public class Player : MonoBehaviour
             {
                 rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
             }
-                
-            if (Input.GetAxis("Horizontal") == 0 && (isGrounded) && (!isClimb))
+
+            //if (Input.GetAxis("Horizontal") == 0 && (isGrounded) && (!isClimb))
+            if (speed == 0 && (isGrounded) && (!isClimb))
             {
                 anim.SetInteger("State", 1);
             }
@@ -76,19 +80,54 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void OnJumpButtonDown()
+    {
+        GroundCheck();
+        if (isGrounded)
+        {
+            rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
+        }
+    }
+
+    public void OnLeftButtonDown()
+    {
+        if (speed >= 0f)
+        {
+            speed = -normalSpeed;
+            rb.velocity = new Vector2(speed, rb.velocity.y);
+        }
+    }
+
+    public void OnRightButtonDown()
+    {
+        if (speed <= 0f)
+        {
+            speed = normalSpeed;
+            rb.velocity = new Vector2(speed, rb.velocity.y);
+        }
+    }
+
+    public void OnButtonUp()
+    {
+        speed = 0f;
+    }
+
     // Движение влево или вправо
     void FixedUpdate()
     {
-        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y);
+        //rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y);
+        rb.velocity = new Vector2(speed, rb.velocity.y);
     }
 
     // Поворот влево или вправо
     void Flip()
     {
-        if (Input.GetAxis("Horizontal") > 0)
+        //if (Input.GetAxis("Horizontal") > 0)
+        if (speed > 0f)
             transform.localRotation = Quaternion.Euler(0, 0, 0);
 
-        if (Input.GetAxis("Horizontal") < 0)
+        //if (Input.GetAxis("Horizontal") < 0)
+        if (speed < 0f)
             transform.localRotation = Quaternion.Euler(0, 180, 0);
     }
 
