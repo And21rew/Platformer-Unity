@@ -8,18 +8,6 @@ public class Door : MonoBehaviour
     public Transform door;
     public Sprite mid, top;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Unlock()
     {
         isOpen = true;

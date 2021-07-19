@@ -10,13 +10,11 @@ public class AdvancedAirPatrol : MonoBehaviour
     bool canGo = true;
     int i = 1;
 
-    // Start is called before the first frame update
     void Start()
     {
         gameObject.transform.position = new Vector3(points[0].position.x, points[0].position.y, transform.position.z);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (canGo)

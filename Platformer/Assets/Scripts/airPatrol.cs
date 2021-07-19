@@ -10,13 +10,11 @@ public class airPatrol : MonoBehaviour
     public float waitTime = 1.5f;
     bool canGo = true;
 
-    // Start is called before the first frame update
     void Start()
     {
         gameObject.transform.position = new Vector3(point1.position.x, point1.position.y, transform.position.z);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (canGo)

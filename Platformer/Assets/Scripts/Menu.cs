@@ -14,10 +14,10 @@ public class Menu : MonoBehaviour
     public Text musicSliderText, soundSliderText;
     public UnityEngine.UI.Button dino1, dino2, dino3;
 
-    // Start is called before the first frame update
     void Start()
     {
         if (PlayerPrefs.HasKey("Lvl"))
+        {
             for (int i = 0; i < lvls.Length; i++)
             {
                 if (i <= PlayerPrefs.GetInt("Lvl"))
@@ -25,23 +25,22 @@ public class Menu : MonoBehaviour
                 else
                     lvls[i].interactable = false;
             }
-
-        if (PlayerPrefs.HasKey("Lvl"))
-        {
-            if (PlayerPrefs.GetInt("Lvl") >= 3)
+            /*
+            if (PlayerPrefs.GetInt("Lvl") > 1)
                 dino1.interactable = true;
             else
                 dino1.interactable = false;
 
-            if (PlayerPrefs.GetInt("Lvl") >= 6)
+            if (PlayerPrefs.GetInt("Lvl") > 2)
                 dino1.interactable = true;
             else
                 dino1.interactable = false;
 
-            if (PlayerPrefs.GetInt("Lvl") >= 9)
+            if (PlayerPrefs.GetInt("Lvl") > 3)
                 dino1.interactable = true;
             else
                 dino1.interactable = false;
+            */
         }
 
         if (!PlayerPrefs.HasKey("hp"))
@@ -63,7 +62,6 @@ public class Menu : MonoBehaviour
         soundSlider.value = PlayerPrefs.GetInt("soundvolume");
     }
 
-    // Update is called once per frame
     void Update()
     {
         PlayerPrefs.SetInt("musicvolume", (int)musicSlider.value);
@@ -93,7 +91,7 @@ public class Menu : MonoBehaviour
             greengemText.text = "0";
     }
 
-        public void OpenScene(int index)
+    public void OpenScene(int index)
     {
         SceneManager.LoadScene(index);
     }

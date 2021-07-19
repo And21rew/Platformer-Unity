@@ -10,13 +10,11 @@ public class Beetle : MonoBehaviour
     bool isWait = false;
     bool isHidden = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         point.transform.position = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!isWait)

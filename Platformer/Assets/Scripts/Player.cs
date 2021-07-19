@@ -27,7 +27,6 @@ public class Player : MonoBehaviour
     public SoundEffect soundEffect;
     public float normalSpeed;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -35,7 +34,6 @@ public class Player : MonoBehaviour
         curHp = maxHP;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (inLava && !isClimb)
@@ -112,14 +110,12 @@ public class Player : MonoBehaviour
         speed = 0f;
     }
 
-    // Движение влево или вправо
     void FixedUpdate()
     {
         //rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y);
         rb.velocity = new Vector2(speed, rb.velocity.y);
     }
 
-    // Поворот влево или вправо
     void Flip()
     {
         //if (Input.GetAxis("Horizontal") > 0)
@@ -131,7 +127,6 @@ public class Player : MonoBehaviour
             transform.localRotation = Quaternion.Euler(0, 180, 0);
     }
 
-    // Проверяем землю под ногами и ставим анимацию прыжка/падения, если земли нет
     void GroundCheck()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(checkGround.position, 0.2f);
@@ -140,7 +135,6 @@ public class Player : MonoBehaviour
             anim.SetInteger("State", 3);
     }
 
-    // Пересчитываем здоровье в +/-
     public void RecountHp(int deltaHp)
     {
         if (deltaHp < 0 && canHit)
@@ -167,7 +161,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    // Красим персонажа в красный и обратно при ударе
     IEnumerator OnHit()
     {
         if(isHit)
@@ -187,7 +180,6 @@ public class Player : MonoBehaviour
         StartCoroutine(OnHit());
     }
 
-    // Перезапуск уровня, если кончилась жизнь
     void Lose()
     {
         main.GetComponent<Main>().Lose();
