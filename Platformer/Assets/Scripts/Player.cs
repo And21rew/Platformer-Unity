@@ -311,12 +311,12 @@ public class Player : MonoBehaviour
         greenGem.SetActive(true);
         CheckGems(greenGem);
 
-        speed *= 2;
+        normalSpeed *= 2;
         greenGem.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
         yield return new WaitForSeconds(4f);
         StartCoroutine(Invis(greenGem.GetComponent<SpriteRenderer>(), 0.02f));
         yield return new WaitForSeconds(1f);
-        speed /= 2;
+        normalSpeed /= 2;
 
         gemCount--;
         greenGem.SetActive(false);
@@ -326,11 +326,11 @@ public class Player : MonoBehaviour
     void CheckGems(GameObject obj)
     {
         if (gemCount == 1)
-            obj.transform.localPosition = new Vector3(0f, 0.6f, obj.transform.localPosition.z);
+            obj.transform.localPosition = new Vector3(0f, 1.5f, obj.transform.localPosition.z);
         else if (gemCount == 2)
         {
-            blueGem.transform.localPosition = new Vector3(-0.5f, 0.6f, blueGem.transform.localPosition.z);
-            greenGem.transform.localPosition = new Vector3(0.5f, 0.6f, greenGem.transform.localPosition.z);
+            blueGem.transform.localPosition = new Vector3(-0.5f, 1.5f, blueGem.transform.localPosition.z);
+            greenGem.transform.localPosition = new Vector3(0.5f, 1.5f, greenGem.transform.localPosition.z);
         }
     }
 
