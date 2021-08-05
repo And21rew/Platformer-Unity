@@ -8,12 +8,14 @@ public class Main : MonoBehaviour
     public Text coinText;
     public Image[] hearts;
     public Sprite isLife, nonLife;
-    public GameObject PauseScreen;
-    public GameObject WinScreen;
-    public GameObject LoseScreen;
-    public GameObject inventoryPanel;
+    public GameObject PauseScreen, WinScreen, LoseScreen, inventoryPanel, buttonPause;
     public SoundEffect soundEffect;
+    int allCoins;
 
+    private void Start()
+    {
+        allCoins = GameObject.FindGameObjectsWithTag("Coin").Length;
+    }
     public void ReloadLevel()
     {
         Time.timeScale = 1f;
@@ -23,7 +25,7 @@ public class Main : MonoBehaviour
 
     public void Update()
     {
-        coinText.text = player.GetCoins().ToString() + "/7";
+        coinText.text = player.GetCoins().ToString() + "/" + allCoins.ToString();
 
         for(int i = 0; i < hearts.Length; i++)
         {
@@ -56,7 +58,7 @@ public class Main : MonoBehaviour
         WinScreen.SetActive(true);
 
         if (!PlayerPrefs.HasKey("Lvl") || PlayerPrefs.GetInt("Lvl") < SceneManager.GetActiveScene().buildIndex)
-            PlayerPrefs.SetInt("Lvl", SceneManager.GetActiveScene().buildIndex);
+            PlayerPrefs.SetInt("Lvl", SceneManager.GetActiveScene().buildIndex - 1);
 
         if (PlayerPrefs.HasKey("coins"))
             PlayerPrefs.SetInt("coins", PlayerPrefs.GetInt("coins") + player.GetCoins());
@@ -65,6 +67,8 @@ public class Main : MonoBehaviour
 
         inventoryPanel.SetActive(false);
         GetComponent<Inventory>().RecountItems();
+
+        buttonPause.SetActive(false);
     }
 
     public void Lose()
@@ -76,13 +80,15 @@ public class Main : MonoBehaviour
 
         inventoryPanel.SetActive(false);
         GetComponent<Inventory>().RecountItems();
+
+        buttonPause.SetActive(false);
     }
 
     public void MenuLevel()
     {
         Time.timeScale = 1f;
         player.enabled = true;
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Cafe");
     }
 
     public void NextLevel()

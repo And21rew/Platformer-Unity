@@ -14,6 +14,7 @@ TagManager:
   - Mushroom
   - BlueGem
   - GreenGem
+  - MovePlatform
   layers:
   - Default
   - TransparentFX

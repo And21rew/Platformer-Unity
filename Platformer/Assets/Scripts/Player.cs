@@ -26,12 +26,17 @@ public class Player : MonoBehaviour
     public Inventory inventory;
     public SoundEffect soundEffect;
     public float normalSpeed;
+    private int jumpsValue;
+    private int jumps;
+    public Joystick joystick;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         curHp = maxHP;
+        jumps = 1;
+        jumpsValue = PlayerPrefs.GetInt("jump");
     }
 
     void Update()
@@ -41,7 +46,8 @@ public class Player : MonoBehaviour
             anim.SetInteger("State", 4);
             isGrounded = true;
             //if (Input.GetAxis("Horizontal") != 0)
-            if (speed != 0)
+            //if (speed != 0)
+            if (joystick.Horizontal != 0)
                 Flip();
             if (Input.GetKeyDown(KeyCode.Space))
                 rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
@@ -51,7 +57,8 @@ public class Player : MonoBehaviour
             anim.SetInteger("State", 4);
             isGrounded = true;
             //if (Input.GetAxis("Horizontal") != 0)
-            if (speed != 0)
+            //if (speed != 0)
+            if (joystick.Horizontal != 0)
                 Flip();
             if (Input.GetKeyDown(KeyCode.Space))
                 rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
@@ -59,13 +66,34 @@ public class Player : MonoBehaviour
         else
         {
             GroundCheck();
-            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            if (jumpsValue == 1)
             {
-                rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
+                if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+                {
+                    rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
+                }
             }
-
+            if (jumpsValue == 2)
+            {
+                if (Input.GetKeyDown(KeyCode.Space) && isGrounded && jumps == 1)
+                {
+                    jumps++;
+                    rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
+                }
+                else if (Input.GetKeyDown(KeyCode.Space) && jumps == 2 && !isGrounded)
+                {
+                    rb.AddForce(transform.up * jumpHeight/1.5f, ForceMode2D.Impulse);
+                    jumps = 1;
+                }
+                else if (Input.GetKeyDown(KeyCode.Space) && jumps == 2 && isGrounded)
+                {
+                    rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
+                    jumps = 1;
+                }
+            }
             //if (Input.GetAxis("Horizontal") == 0 && (isGrounded) && (!isClimb))
-            if (speed == 0 && (isGrounded) && (!isClimb))
+            //if (speed == 0 && (isGrounded) && (!isClimb))
+            if (joystick.Horizontal == 0 && (isGrounded) && (!isClimb))
             {
                 anim.SetInteger("State", 1);
             }
@@ -81,12 +109,34 @@ public class Player : MonoBehaviour
     public void OnJumpButtonDown()
     {
         GroundCheck();
-        if (isGrounded)
+        if (jumpsValue == 1)
         {
-            rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
+            if (isGrounded)
+            {
+                rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
+            }
+        }
+        if (jumpsValue == 2)
+        {
+            if (isGrounded && jumps == 1)
+            {
+                jumps++;
+                rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
+            }
+            else if (jumps == 2 && !isGrounded)
+            {
+                rb.AddForce(transform.up * jumpHeight / 1.5f, ForceMode2D.Impulse);
+                jumps = 1;
+            }
+            else if (jumps == 2 && isGrounded)
+            {
+                rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
+                jumps = 1;
+            }
         }
     }
 
+    /*
     public void OnLeftButtonDown()
     {
         if (speed >= 0f)
@@ -104,6 +154,7 @@ public class Player : MonoBehaviour
             rb.velocity = new Vector2(speed, rb.velocity.y);
         }
     }
+    */
 
     public void OnButtonUp()
     {
@@ -113,17 +164,20 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         //rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y);
-        rb.velocity = new Vector2(speed, rb.velocity.y);
+        //rb.velocity = new Vector2(speed, rb.velocity.y);
+        rb.velocity = new Vector2(joystick.Horizontal * normalSpeed, rb.velocity.y);
     }
 
     void Flip()
     {
         //if (Input.GetAxis("Horizontal") > 0)
-        if (speed > 0f)
+        //if (speed > 0f)
+        if (joystick.Horizontal > 0)
             transform.localRotation = Quaternion.Euler(0, 0, 0);
 
         //if (Input.GetAxis("Horizontal") < 0)
-        if (speed < 0f)
+        //if (speed < 0f)
+        if (joystick.Horizontal < 0)
             transform.localRotation = Quaternion.Euler(0, 180, 0);
     }
 
@@ -251,14 +305,15 @@ public class Player : MonoBehaviour
         {
             isClimb = true;
             rb.bodyType = RigidbodyType2D.Kinematic;
-            if (Input.GetAxis("Vertical") == 0)
+            //if (Input.GetAxis("Vertical") == 0)
+            if (joystick.Vertical == 0)
             {
                 anim.SetInteger("State", 5);
             }
             else
             {
                 anim.SetInteger("State", 6);
-                transform.Translate(Vector3.up * Input.GetAxis("Vertical") * speed * 0.5f * Time.deltaTime);
+                transform.Translate(Vector3.up * joystick.Vertical * normalSpeed * Time.deltaTime);
             }
         }
     }
@@ -277,6 +332,19 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Trampoline")
         {
             StartCoroutine(TrampolineAnim(collision.gameObject.GetComponentInParent<Animator>()));
+        }
+
+        if (collision.gameObject.tag == "MovePlatform")
+        {
+            this.transform.parent = collision.transform;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "MovePlatform")
+        {
+            this.transform.parent = null;
         }
     }
 
@@ -312,11 +380,13 @@ public class Player : MonoBehaviour
         CheckGems(greenGem);
 
         normalSpeed *= 2;
+        jumpHeight *= 1.5f;
         greenGem.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
         yield return new WaitForSeconds(4f);
         StartCoroutine(Invis(greenGem.GetComponent<SpriteRenderer>(), 0.02f));
         yield return new WaitForSeconds(1f);
-        normalSpeed /= 2;
+        normalSpeed /= 2; 
+        jumpHeight /= 1.5f;
 
         gemCount--;
         greenGem.SetActive(false);

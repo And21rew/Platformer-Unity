@@ -11,7 +11,7 @@ public class DeathPlatform : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             player.canHit = true;
-            collision.gameObject.GetComponent<Player>().RecountHp(-3);
+            collision.gameObject.GetComponent<Player>().RecountHp(-10);
         }
     }
 }

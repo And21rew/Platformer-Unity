@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class groundPatrol : MonoBehaviour
 {
-    public float speed = 1.5f;
-    public bool moveLeft = true;
-    public Transform groundDetect;
+    [SerializeField] private float speed = 1.5f;
+    [SerializeField] private bool moveLeft = true;
+    [SerializeField] private Transform groundDetect;
 
     void Update()
     {
         transform.Translate(Vector2.left * speed * Time.deltaTime);
         RaycastHit2D groundInfo = Physics2D.Raycast(groundDetect.position, Vector2.down, 1f);
-        if (groundInfo.collider == false)
+        if (!groundInfo.collider)
         {
-            if (moveLeft == true)
+            if (moveLeft)
             {
                 transform.eulerAngles = new Vector3(0, 180, 0);
                 moveLeft = false;
