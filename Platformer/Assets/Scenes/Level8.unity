@@ -35735,6 +35735,7 @@ Transform:
   - {fileID: 1927715599}
   - {fileID: 17095339}
   - {fileID: 366928769}
+  - {fileID: 428401844}
   - {fileID: 1718861441}
   - {fileID: 900725842}
   - {fileID: 1197814420}
@@ -35742,10 +35743,8 @@ Transform:
   - {fileID: 349354302}
   - {fileID: 1591833627}
   - {fileID: 1182836002}
-  - {fileID: 428401844}
-  - {fileID: 2127978859}
   - {fileID: 1243983777}
-  - {fileID: 1819787908}
+  - {fileID: 2127978859}
   - {fileID: 272636368}
   - {fileID: 184317908}
   - {fileID: 2101370523}
@@ -35775,6 +35774,7 @@ Transform:
   - {fileID: 1261260978}
   - {fileID: 70331430}
   - {fileID: 1891513182}
+  - {fileID: 1819787908}
   - {fileID: 529686972}
   - {fileID: 158880357}
   - {fileID: 1751441824}
@@ -35903,12 +35903,12 @@ Transform:
   - {fileID: 636518488}
   - {fileID: 1815569761}
   - {fileID: 1060572442}
+  - {fileID: 1503990243}
   - {fileID: 865610900}
   - {fileID: 1889369236}
   - {fileID: 1020826037}
-  - {fileID: 1786770400}
-  - {fileID: 1503990243}
   - {fileID: 17731306}
+  - {fileID: 1786770400}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -37035,7 +37035,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d8724375cb7bc684d87491b95570d976, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 07cb64fd3c598f94fb653782e64438d9, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.4
   m_Pitch: 1
