@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
@@ -104,6 +105,11 @@ public class Player : MonoBehaviour
                     anim.SetInteger("State", 2);
             }
         }
+    }
+
+    public void OnPointerDown(BaseEventData _)
+    {
+        OnJumpButtonDown();
     }
 
     public void OnJumpButtonDown()
@@ -217,18 +223,20 @@ public class Player : MonoBehaviour
 
     IEnumerator OnHit()
     {
-        if(isHit)
-            GetComponent<SpriteRenderer>().color = new Color(1f, GetComponent<SpriteRenderer>().color.g - 0.04f, GetComponent<SpriteRenderer>().color.b - 0.04f);
-        else
-            GetComponent<SpriteRenderer>().color = new Color(1f, GetComponent<SpriteRenderer>().color.g + 0.04f, GetComponent<SpriteRenderer>().color.b + 0.04f);
+        var color = GetComponent<SpriteRenderer>().color;
         
-        if (GetComponent<SpriteRenderer>().color.g == 1f)
+        if(isHit)
+            color = new Color(1f, color.g - 0.04f, color.b - 0.04f);
+        else
+            color = new Color(1f, color.g + 0.04f, color.b + 0.04f);
+        
+        if (color.g == 1f)
         {
             StopCoroutine(OnHit());
             canHit = true;
         }
 
-        if (GetComponent<SpriteRenderer>().color.g <= 0)
+        if (color.g <= 0)
             isHit = false;
         yield return new WaitForSeconds(0.02f);
         StartCoroutine(OnHit());
@@ -250,14 +258,15 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.tag == "Door")
         {
-            if (collision.gameObject.GetComponent<Door>().isOpen && canTP)
+            var door = collision.gameObject.GetComponent<Door>();
+            if (door.isOpen && canTP)
             {
-                collision.gameObject.GetComponent<Door>().Teleport(gameObject);
+                door.Teleport(gameObject);
                 canTP = false;
                 StartCoroutine(TPwait());            
             }
             else if (key)
-                collision.gameObject.GetComponent<Door>().Unlock();
+                door.Unlock();
         }
 
         if (collision.gameObject.tag == "Coin")

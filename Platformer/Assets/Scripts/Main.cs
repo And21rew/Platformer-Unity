@@ -16,6 +16,7 @@ public class Main : MonoBehaviour
     {
         allCoins = GameObject.FindGameObjectsWithTag("Coin").Length;
     }
+    
     public void ReloadLevel()
     {
         Time.timeScale = 1f;
