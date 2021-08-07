@@ -5,14 +5,13 @@ using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
-    Rigidbody2D rb;
-    public float speed;
+    public Rigidbody2D rb;
     public float jumpHeight;
     public Transform checkGround;
     bool isGrounded;
     Animator anim;
     int curHp;
-    int maxHP = 3;
+    public int maxHP = 3;
     bool isHit = false;
     public Main main;
     public bool key = false;
@@ -26,7 +25,7 @@ public class Player : MonoBehaviour
     int gemCount = 0;
     public Inventory inventory;
     public SoundEffect soundEffect;
-    public float normalSpeed;
+    public float speed;
     private int jumpsValue;
     private int jumps;
     public Joystick joystick;
@@ -46,9 +45,8 @@ public class Player : MonoBehaviour
         {
             anim.SetInteger("State", 4);
             isGrounded = true;
-            //if (Input.GetAxis("Horizontal") != 0)
-            //if (speed != 0)
-            if (joystick.Horizontal != 0)
+            //if (Input.GetAxis("Horizontal") != 0) Управление для кнопок WASD
+            if ((joystick.Horizontal != 0) || (Input.GetAxis("Horizontal") != 0))
                 Flip();
             if (Input.GetKeyDown(KeyCode.Space))
                 rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
@@ -57,9 +55,8 @@ public class Player : MonoBehaviour
         {
             anim.SetInteger("State", 4);
             isGrounded = true;
-            //if (Input.GetAxis("Horizontal") != 0)
-            //if (speed != 0)
-            if (joystick.Horizontal != 0)
+            //if (Input.GetAxis("Horizontal") != 0) Управление для кнопок WASD
+            if ((joystick.Horizontal != 0) || (Input.GetAxis("Horizontal") != 0))
                 Flip();
             if (Input.GetKeyDown(KeyCode.Space))
                 rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
@@ -92,9 +89,8 @@ public class Player : MonoBehaviour
                     jumps = 1;
                 }
             }
-            //if (Input.GetAxis("Horizontal") == 0 && (isGrounded) && (!isClimb))
-            //if (speed == 0 && (isGrounded) && (!isClimb))
-            if (joystick.Horizontal == 0 && (isGrounded) && (!isClimb))
+            //if (Input.GetAxis("Horizontal") == 0 && (isGrounded) && (!isClimb)) Управление для кнопок WASD
+            if (joystick.Horizontal == 0 && isGrounded && !isClimb)
             {
                 anim.SetInteger("State", 1);
             }
@@ -142,47 +138,19 @@ public class Player : MonoBehaviour
         }
     }
 
-    /*
-    public void OnLeftButtonDown()
-    {
-        if (speed >= 0f)
-        {
-            speed = -normalSpeed;
-            rb.velocity = new Vector2(speed, rb.velocity.y);
-        }
-    }
-
-    public void OnRightButtonDown()
-    {
-        if (speed <= 0f)
-        {
-            speed = normalSpeed;
-            rb.velocity = new Vector2(speed, rb.velocity.y);
-        }
-    }
-    */
-
-    public void OnButtonUp()
-    {
-        speed = 0f;
-    }
-
     void FixedUpdate()
     {
-        //rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y);
-        //rb.velocity = new Vector2(speed, rb.velocity.y);
-        rb.velocity = new Vector2(joystick.Horizontal * normalSpeed, rb.velocity.y);
+        //rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y); Управление для кнопок WASD
+        rb.velocity = new Vector2(joystick.Horizontal * speed, rb.velocity.y);
     }
 
     void Flip()
     {
-        //if (Input.GetAxis("Horizontal") > 0)
-        //if (speed > 0f)
+        //if (Input.GetAxis("Horizontal") > 0) Управление для кнопок WASD
         if (joystick.Horizontal > 0)
             transform.localRotation = Quaternion.Euler(0, 0, 0);
 
-        //if (Input.GetAxis("Horizontal") < 0)
-        //if (speed < 0f)
+        //if (Input.GetAxis("Horizontal") < 0) Управление для кнопок WASD
         if (joystick.Horizontal < 0)
             transform.localRotation = Quaternion.Euler(0, 180, 0);
     }
@@ -217,7 +185,7 @@ public class Player : MonoBehaviour
         if (curHp <= 0)
         {
             GetComponent<CapsuleCollider2D>().enabled = false;
-            Invoke("Lose", 1.5f);
+            Invoke(nameof(Lose), 1.5f);
         }
     }
 
@@ -249,14 +217,14 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Key")
+        if (collision.gameObject.CompareTag("Key"))
         {
             Destroy(collision.gameObject);
             key = true;
             inventory.Add_key();
         }
 
-        if (collision.gameObject.tag == "Door")
+        if (collision.gameObject.CompareTag("Door"))
         {
             var door = collision.gameObject.GetComponent<Door>();
             if (door.isOpen && canTP)
@@ -269,33 +237,33 @@ public class Player : MonoBehaviour
                 door.Unlock();
         }
 
-        if (collision.gameObject.tag == "Coin")
+        if (collision.gameObject.CompareTag("Coin"))
         {
             Destroy(collision.gameObject);
             coins++;
             soundEffect.PlayCoinSound();
         }
 
-        if (collision.gameObject.tag == "Heart")
+        if (collision.gameObject.CompareTag("Heart"))
         {
             Destroy(collision.gameObject);
             inventory.Add_hp();
 
         }
 
-        if (collision.gameObject.tag == "Mushroom")
+        if (collision.gameObject.CompareTag("Mushroom"))
         {
             Destroy(collision.gameObject);
             RecountHp(-1);
         }
 
-        if (collision.gameObject.tag == "BlueGem")
+        if (collision.gameObject.CompareTag("BlueGem"))
         {
             Destroy(collision.gameObject);
             inventory.Add_bluegem();
         }
 
-        if (collision.gameObject.tag == "GreenGem")
+        if (collision.gameObject.CompareTag("GreenGem"))
         {
             Destroy(collision.gameObject);
             inventory.Add_greengem();
@@ -310,11 +278,12 @@ public class Player : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Ladder")
+        if(collision.gameObject.CompareTag("Ladder"))
         {
             isClimb = true;
             rb.bodyType = RigidbodyType2D.Kinematic;
-            //if (Input.GetAxis("Vertical") == 0)
+
+            //if (Input.GetAxis("Vertical") == 0) Управление для кнопок WASD
             if (joystick.Vertical == 0)
             {
                 anim.SetInteger("State", 5);
@@ -322,7 +291,7 @@ public class Player : MonoBehaviour
             else
             {
                 anim.SetInteger("State", 6);
-                transform.Translate(Vector3.up * joystick.Vertical * normalSpeed * Time.deltaTime);
+                transform.Translate(joystick.Vertical * speed * Time.deltaTime * Vector3.up);
             }
         }
     }
@@ -330,7 +299,7 @@ public class Player : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         isClimb = false;
-        if (collision.gameObject.tag == "Ladder")
+        if (collision.gameObject.CompareTag("Ladder"))
         {
             rb.bodyType = RigidbodyType2D.Dynamic;
         }
@@ -338,12 +307,12 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Trampoline")
+        if (collision.gameObject.CompareTag("Trampoline"))
         {
             StartCoroutine(TrampolineAnim(collision.gameObject.GetComponentInParent<Animator>()));
         }
 
-        if (collision.gameObject.tag == "MovePlatform")
+        if (collision.gameObject.CompareTag("MovePlatform"))
         {
             this.transform.parent = collision.transform;
         }
@@ -351,7 +320,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "MovePlatform")
+        if (collision.gameObject.CompareTag("MovePlatform"))
         {
             this.transform.parent = null;
         }
@@ -388,13 +357,13 @@ public class Player : MonoBehaviour
         greenGem.SetActive(true);
         CheckGems(greenGem);
 
-        normalSpeed *= 2;
+        speed *= 2;
         jumpHeight *= 1.5f;
         greenGem.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
         yield return new WaitForSeconds(4f);
         StartCoroutine(Invis(greenGem.GetComponent<SpriteRenderer>(), 0.02f));
         yield return new WaitForSeconds(1f);
-        normalSpeed /= 2; 
+        speed /= 2; 
         jumpHeight /= 1.5f;
 
         gemCount--;

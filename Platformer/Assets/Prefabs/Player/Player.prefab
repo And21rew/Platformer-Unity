@@ -332,9 +332,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b73fa3c7c8add94ea0f05fdbd00b8f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  rb: {fileID: 0}
   jumpHeight: 13
   checkGround: {fileID: 865374101975259554}
+  maxHP: 3
   main: {fileID: 0}
   key: 0
   inWater: 0
@@ -344,7 +345,7 @@ MonoBehaviour:
   greenGem: {fileID: 865374102149415729}
   inventory: {fileID: 0}
   soundEffect: {fileID: 0}
-  normalSpeed: 8
+  speed: 8
   joystick: {fileID: 0}
 --- !u!95 &865374102428580416
 Animator:

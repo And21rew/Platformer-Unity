@@ -8,7 +8,7 @@ public class DeathPlatform : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             player.canHit = true;
             collision.gameObject.GetComponent<Player>().RecountHp(-10);

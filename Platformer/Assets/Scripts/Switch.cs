@@ -14,9 +14,7 @@ public class Switch : MonoBehaviour
             GetComponent<Animator>().SetBool("Off", false);
             GetComponent<BoxCollider2D>().enabled = false;
             foreach (GameObject obj in block)
-            {
                 obj.SetActive(true);
-            }
         }
     }
 }

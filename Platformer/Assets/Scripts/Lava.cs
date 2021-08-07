@@ -23,7 +23,7 @@ public class Lava : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             collision.GetComponent<Player>().inLava = true;
             timerHit += Time.deltaTime;
@@ -37,7 +37,7 @@ public class Lava : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             collision.GetComponent<Player>().inLava = false;
             timerHit = 0;

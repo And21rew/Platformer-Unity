@@ -10,7 +10,7 @@ public class groundPatrol : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector2.left * speed * Time.deltaTime);
+        transform.Translate(speed * Time.deltaTime * Vector2.left);
         RaycastHit2D groundInfo = Physics2D.Raycast(groundDetect.position, Vector2.down, 1f);
         if (!groundInfo.collider)
         {
