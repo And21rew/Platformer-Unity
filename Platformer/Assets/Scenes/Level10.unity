@@ -16899,6 +16899,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4475382365729964841, guid: 01b10e400b6635643ae0b62713668065, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4475382365729964841, guid: 01b10e400b6635643ae0b62713668065, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.749999
+      objectReference: {fileID: 0}
     - target: {fileID: 4475382365729964843, guid: 01b10e400b6635643ae0b62713668065, type: 3}
       propertyPath: speed
       value: 2.5
@@ -28096,6 +28104,14 @@ PrefabInstance:
     - target: {fileID: 4475382365188706621, guid: 01b10e400b6635643ae0b62713668065, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4475382365729964841, guid: 01b10e400b6635643ae0b62713668065, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4475382365729964841, guid: 01b10e400b6635643ae0b62713668065, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 4475382365729964843, guid: 01b10e400b6635643ae0b62713668065, type: 3}
       propertyPath: speed
@@ -43222,6 +43238,14 @@ PrefabInstance:
     - target: {fileID: 4475382365188706621, guid: 01b10e400b6635643ae0b62713668065, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4475382365729964841, guid: 01b10e400b6635643ae0b62713668065, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4475382365729964841, guid: 01b10e400b6635643ae0b62713668065, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 4475382365729964843, guid: 01b10e400b6635643ae0b62713668065, type: 3}
       propertyPath: speed
