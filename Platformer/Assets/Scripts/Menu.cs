@@ -10,8 +10,6 @@ public class Menu : MonoBehaviour
     public UnityEngine.UI.Button heart, bluegm, greengm, doublejump;
     public Text coinText, heartText, bluegemText, greengemText;
     public int maxCountBonus = 5;
-    public Slider musicSlider, soundSlider;
-    public Text musicSliderText, soundSliderText;
     public UnityEngine.UI.Button dino1, dino2, dino3, dino1Lib, dino2Lib, dino3Lib;
 
     void Start()
@@ -41,9 +39,6 @@ public class Menu : MonoBehaviour
 
         if (!PlayerPrefs.HasKey("soundvolume"))
             PlayerPrefs.SetInt("soundvolume", 10);
-
-        musicSlider.value = PlayerPrefs.GetInt("musicvolume");
-        soundSlider.value = PlayerPrefs.GetInt("soundvolume");
 
         if (!PlayerPrefs.HasKey("dino1"))
         {
@@ -97,12 +92,6 @@ public class Menu : MonoBehaviour
 
     void Update()
     {
-        PlayerPrefs.SetInt("musicvolume", (int)musicSlider.value);
-        musicSliderText.text = musicSlider.value.ToString();
-
-        PlayerPrefs.SetInt("soundvolume", (int)soundSlider.value);
-        soundSliderText.text = soundSlider.value.ToString();
-
         if (PlayerPrefs.HasKey("coins"))
             coinText.text = PlayerPrefs.GetInt("coins").ToString();
         else
