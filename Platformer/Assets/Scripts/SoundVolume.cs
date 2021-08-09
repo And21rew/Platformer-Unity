@@ -6,15 +6,13 @@ public class SoundVolume : MonoBehaviour
 {
     public AudioSource musicSource, soundSource;
 
-    private void Start()
+    public void ChangeSoundValue()
     {
-        musicSource.volume = (float)PlayerPrefs.GetInt("musicvolume") / 10;
         soundSource.volume = (float)PlayerPrefs.GetInt("soundvolume") / 10;
     }
-
-    private void Update()
+    
+    public void ChangeMusicValue()
     {
         musicSource.volume = (float)PlayerPrefs.GetInt("musicvolume") / 10;
-        soundSource.volume = (float)PlayerPrefs.GetInt("soundvolume") / 10;
     }
 }
