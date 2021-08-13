@@ -26,6 +26,7 @@ ScriptsOnlyBuild:
     - SoundEffect
     - SoundVolume
     - Switch
+    - Trap
     - WallPatrol
     - Water
     - airPatrol
@@ -992,25 +993,53 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12184}
     - Class: 114
+      Script: {instanceID: 13410}
+    - Class: 114
       Script: {instanceID: 13534}
     - Class: 114
       Script: {instanceID: 13686}
     - Class: 114
+      Script: {instanceID: 13722}
+    - Class: 114
+      Script: {instanceID: 13794}
+    - Class: 114
+      Script: {instanceID: 14076}
+    - Class: 114
+      Script: {instanceID: 14120}
+    - Class: 114
       Script: {instanceID: 14462}
+    - Class: 114
+      Script: {instanceID: 14848}
+    - Class: 114
+      Script: {instanceID: 14996}
     - Class: 114
       Script: {instanceID: 15028}
     - Class: 114
       Script: {instanceID: 15124}
     - Class: 114
+      Script: {instanceID: 15170}
+    - Class: 114
+      Script: {instanceID: 15230}
+    - Class: 114
+      Script: {instanceID: 15484}
+    - Class: 114
+      Script: {instanceID: 15608}
+    - Class: 114
       Script: {instanceID: 15622}
     - Class: 114
       Script: {instanceID: 15758}
+    - Class: 114
+      Script: {instanceID: 15816}
     - Class: 114
       Script: {instanceID: 16214}
     - Class: 114
       Script: {instanceID: 16460}
     - Class: 114
+      Script: {instanceID: 16522}
+    - Class: 114
       Script: {instanceID: 16560}
+    - Class: 114
+      Script: {instanceID: 26894}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1028,6 +1057,8 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 233
       Script: {instanceID: 0}
     Assets/Scenes/Level16.unity:
     - Class: 1
@@ -5637,6 +5668,12 @@ ScriptsOnlyBuild:
     assemblyName: Fungus.dll
     namespaceName: Fungus
     className: MoveLean
+  - hash:
+      serializedVersion: 2
+      Hash: 2c1ac25793eff734b09fe9287043436d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Trap
   platform: 13
   scenePathNames:
   - Assets/Scenes/Menu.unity
