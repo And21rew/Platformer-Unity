@@ -10,7 +10,7 @@ public class Menu : MonoBehaviour
     public UnityEngine.UI.Button heart, bluegm, greengm, doublejump;
     public Text coinText, heartText, bluegemText, greengemText;
     public int maxCountBonus = 5;
-    public UnityEngine.UI.Button dino1, dino2, dino3, dino1Lib, dino2Lib, dino3Lib;
+    public UnityEngine.UI.Button dino1, dino2, dino3, dino1Lib, dino2Lib, dino3Lib, dino4Lib, dino5Lib, dino6Lib;
 
     void Start()
     {
@@ -24,6 +24,21 @@ public class Menu : MonoBehaviour
                     lvls[i].interactable = false;
             }
         }
+
+        if (PlayerPrefs.GetInt("Lvl") >= 10)
+            dino4Lib.interactable = true;
+        else
+            dino4Lib.interactable = false;
+
+        if (PlayerPrefs.GetInt("Lvl") >= 17)
+            dino5Lib.interactable = true;
+        else
+            dino5Lib.interactable = false;
+
+        if (PlayerPrefs.GetInt("Lvl") >= 24)
+            dino6Lib.interactable = true;
+        else
+            dino6Lib.interactable = false;
 
         if (!PlayerPrefs.HasKey("hp"))
             PlayerPrefs.SetInt("hp", 0);
