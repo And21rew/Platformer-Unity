@@ -26,19 +26,19 @@ public class Menu : MonoBehaviour
         }
 
         if (PlayerPrefs.GetInt("Lvl") >= 10)
-            dino4Lib.interactable = true;
+            dino1Lib.interactable = true;
         else
-            dino4Lib.interactable = false;
+            dino1Lib.interactable = false;
 
         if (PlayerPrefs.GetInt("Lvl") >= 17)
-            dino5Lib.interactable = true;
+            dino2Lib.interactable = true;
         else
-            dino5Lib.interactable = false;
+            dino2Lib.interactable = false;
 
         if (PlayerPrefs.GetInt("Lvl") >= 24)
-            dino6Lib.interactable = true;
+            dino3Lib.interactable = true;
         else
-            dino6Lib.interactable = false;
+            dino3Lib.interactable = false;
 
         if (!PlayerPrefs.HasKey("hp"))
             PlayerPrefs.SetInt("hp", 0);
@@ -58,43 +58,43 @@ public class Menu : MonoBehaviour
         if (!PlayerPrefs.HasKey("dino1"))
         {
             PlayerPrefs.SetInt("dino1", 0);
-            dino1Lib.interactable = false;
+            dino4Lib.interactable = false;
         } 
         else if (PlayerPrefs.GetInt("dino1") == 0)
         {
-            dino1Lib.interactable = false;
+            dino4Lib.interactable = false;
         }
         else
         {
-            dino1Lib.interactable = true;
+            dino4Lib.interactable = true;
         }
 
         if (!PlayerPrefs.HasKey("dino2"))
         {
             PlayerPrefs.SetInt("dino2", 0);
-            dino2Lib.interactable = false;
+            dino5Lib.interactable = false;
         }
         else if (PlayerPrefs.GetInt("dino2") == 0)
         {
-            dino2Lib.interactable = false;
+            dino5Lib.interactable = false;
         }
         else
         {
-            dino2Lib.interactable = true;
+            dino5Lib.interactable = true;
         }
 
         if (!PlayerPrefs.HasKey("dino3"))
         {
             PlayerPrefs.SetInt("dino3", 0);
-            dino3Lib.interactable = false;
+            dino6Lib.interactable = false;
         }
         else if (PlayerPrefs.GetInt("dino3") == 0)
         {
-            dino3Lib.interactable = false;
+            dino6Lib.interactable = false;
         }
         else
         {
-            dino3Lib.interactable = true;
+            dino6Lib.interactable = true;
         }
 
         if (!PlayerPrefs.HasKey("jump"))
@@ -129,19 +129,19 @@ public class Menu : MonoBehaviour
 
         if(PlayerPrefs.GetInt("dino1") == 1)
         {
-            dino1Lib.interactable = true;
+            dino4Lib.interactable = true;
             dino1.interactable = false;
         }
 
         if (PlayerPrefs.GetInt("dino2") == 1)
         {
-            dino2Lib.interactable = true;
+            dino5Lib.interactable = true;
             dino2.interactable = false;
         }
 
         if (PlayerPrefs.GetInt("dino3") == 1)
         {
-            dino3Lib.interactable = true;
+            dino6Lib.interactable = true;
             dino3.interactable = false;
         }
     }
