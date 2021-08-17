@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Cotoraptor : MonoBehaviour
 {
+    [SerializeField] private GameObject drop;
     bool isHit = false;
-    public GameObject drop;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player" && !isHit)
+        if (collision.gameObject.CompareTag("Player") && !isHit)
         {
             collision.gameObject.GetComponent<Player>().RecountHp(-3);
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * 8f, ForceMode2D.Impulse);

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class AdvancedAirPatrol : MonoBehaviour
 {
-    public Transform[] points;
-    public float speed = 2f;
-    public float waitTime = 3f;
+    [SerializeField] private Transform[] points;
+    [SerializeField] private float speed = 2f;
+    [SerializeField] private float waitTime = 3f;
     bool canGo = true;
     int i = 1;
 

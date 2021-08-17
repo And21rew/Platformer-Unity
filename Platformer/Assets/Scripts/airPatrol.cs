@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class airPatrol : MonoBehaviour
 {
-    public Transform point1;
-    public Transform point2;
-    public float speed = 3f;
-    public float waitTime = 1.5f;
+    [SerializeField] private Transform point1;
+    [SerializeField] private Transform point2;
+    [SerializeField] private float speed = 3f;
+    [SerializeField] private float waitTime = 1.5f;
     bool canGo = true;
 
     void Start()

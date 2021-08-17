@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Bomber : MonoBehaviour
 {
-    public GameObject bullet;
-    public Transform shoot;
-    public float timeShoot = 4f;
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private Transform shoot;
+    [SerializeField] private float timeShoot = 4f;
 
     void Start()
     {

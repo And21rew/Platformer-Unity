@@ -32,7 +32,7 @@ public class Jumper : MonoBehaviour
 
             if (LeftPlayerInfo.collider.CompareTag("Player"))
             {
-                StartCoroutine(JumpOnPlayerLeft());
+                StartCoroutine(JumpOnPlayer());
             }
 
             if (LeftWallInfo.collider.CompareTag("WallGround"))
@@ -47,7 +47,7 @@ public class Jumper : MonoBehaviour
 
             if (RightPlayerInfo.collider.CompareTag("Player"))
             {
-                StartCoroutine(JumpOnPlayerRight());
+                StartCoroutine(JumpOnPlayer());
             }
 
             if (RightWallInfo.collider.CompareTag("WallGround"))
@@ -57,24 +57,13 @@ public class Jumper : MonoBehaviour
         }
     }
 
-    IEnumerator JumpOnPlayerLeft()
+    IEnumerator JumpOnPlayer()
     {
         canGo = false;
-        var posX = (this.transform.position.x + player.transform.position.x) / 2;
-        var posY = player.transform.position.y + 20;
+        var posX = (transform.position.x + player.transform.position.x) / 2;
+        var posY = player.transform.position.y + 1;
         MediumDistance.position = new Vector3(posX, posY, transform.position.z);
         rb.AddForce(MediumDistance.position * jumpHeight, ForceMode2D.Impulse);
-        yield return new WaitForSeconds(3f);
-        canGo = true;
-    }
-
-    IEnumerator JumpOnPlayerRight()
-    {
-        canGo = false;
-        var posX = (this.transform.position.x + player.transform.position.x) / 2;
-        var posY = player.transform.position.y + 20;
-        MediumDistance.position = new Vector3(posX, posY, transform.position.z);
-        rb.AddForce(MediumDistance.position * -jumpHeight, ForceMode2D.Impulse);
         yield return new WaitForSeconds(3f);
         canGo = true;
     }

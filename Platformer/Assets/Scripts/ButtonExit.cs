@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ButtonExit : MonoBehaviour
 {
-    public UnityEngine.UI.Button btnExit;
+    [SerializeField] private UnityEngine.UI.Button btnExit;
 
     public void Exit()
     {

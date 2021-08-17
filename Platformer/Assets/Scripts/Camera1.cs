@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Camera1 : MonoBehaviour
 {
-    float speed = 8f;
-    public Transform target;
+    [SerializeField] private Transform target;
+    readonly float speed = 8f;
 
     void Start()
     {
