@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
+    [SerializeField] private Transform door;
+    [SerializeField] private Sprite mid, top;
     public bool isOpen = false;
-    public Transform door;
-    public Sprite mid, top;
 
     public void Unlock()
     {

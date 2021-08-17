@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Finish : MonoBehaviour
 {
-    public Main main;
-    public Sprite finSprite;
+    [SerializeField] private Main main;
+    [SerializeField] private Sprite finSprite;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

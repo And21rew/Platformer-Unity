@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 4f;
-    public float TimeToDisable = 1f;
+    private readonly float speed = 4f;
+    private readonly float TimeToDisable = 1f;
 
     void Start()
     {
@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector2.down * speed * Time.deltaTime);
+        transform.Translate(speed * Time.deltaTime * Vector2.down);
     }
 
     IEnumerator SetDisable()

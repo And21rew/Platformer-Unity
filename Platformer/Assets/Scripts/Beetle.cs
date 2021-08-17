@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Beetle : MonoBehaviour
 {
-    public float speed = 4f;
-    public float waitTime = 4f;
-    public Transform point;
+    [SerializeField] private float speed = 4f;
+    [SerializeField] private float waitTime = 4f;
+    [SerializeField] private Transform point;
     bool isWait = false;
     bool isHidden = false;
 

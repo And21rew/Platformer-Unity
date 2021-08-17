@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DeathPlatform : MonoBehaviour
 {
-    public Player player;
+    [SerializeField] private Player player;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
