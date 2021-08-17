@@ -6,6 +6,7 @@ ScriptsOnlyBuild:
     - Beetle
     - Bomber
     - Bullet
+    - BulletPlant
     - Button
     - ButtonExit
     - Camera1
@@ -23,6 +24,7 @@ ScriptsOnlyBuild:
     - Menu
     - MovePlatform
     - Player
+    - Shoot
     - SoundEffect
     - SoundVolume
     - Switch
@@ -1695,23 +1697,55 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12184}
     - Class: 114
+      Script: {instanceID: 12882}
+    - Class: 114
+      Script: {instanceID: 13410}
+    - Class: 114
       Script: {instanceID: 13534}
     - Class: 114
       Script: {instanceID: 13686}
     - Class: 114
+      Script: {instanceID: 13722}
+    - Class: 114
+      Script: {instanceID: 13784}
+    - Class: 114
+      Script: {instanceID: 13794}
+    - Class: 114
+      Script: {instanceID: 14076}
+    - Class: 114
+      Script: {instanceID: 14120}
+    - Class: 114
       Script: {instanceID: 14464}
+    - Class: 114
+      Script: {instanceID: 14850}
+    - Class: 114
+      Script: {instanceID: 14998}
     - Class: 114
       Script: {instanceID: 15030}
     - Class: 114
       Script: {instanceID: 15126}
     - Class: 114
+      Script: {instanceID: 15172}
+    - Class: 114
+      Script: {instanceID: 15232}
+    - Class: 114
+      Script: {instanceID: 15486}
+    - Class: 114
+      Script: {instanceID: 15610}
+    - Class: 114
       Script: {instanceID: 15624}
     - Class: 114
       Script: {instanceID: 15760}
     - Class: 114
+      Script: {instanceID: 15818}
+    - Class: 114
       Script: {instanceID: 16216}
     - Class: 114
+      Script: {instanceID: 16458}
+    - Class: 114
       Script: {instanceID: 16462}
+    - Class: 114
+      Script: {instanceID: 16524}
     - Class: 114
       Script: {instanceID: 16562}
     - Class: 115
@@ -1731,6 +1765,8 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 233
       Script: {instanceID: 0}
     Assets/Scenes/Level21.unity:
     - Class: 1
@@ -2607,8 +2643,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13534}
     - Class: 114
       Script: {instanceID: 13588}
-    - Class: 114
-      Script: {instanceID: 13618}
     - Class: 114
       Script: {instanceID: 13686}
     - Class: 114
@@ -5162,7 +5196,7 @@ ScriptsOnlyBuild:
     className: SetAnimInteger
   - hash:
       serializedVersion: 2
-      Hash: af0e3ecca7f0ee66a3852a9e93139ec5
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Bullet
@@ -5672,7 +5706,7 @@ ScriptsOnlyBuild:
     className: ControlAudio
   - hash:
       serializedVersion: 2
-      Hash: aa19b421c3d8ef5fd9154699b63a318f
+      Hash: 39280423a0b9481d3274ccdc587122f9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Door
@@ -5807,4 +5841,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Level23.unity
   - Assets/Scenes/Level24.unity
   - Assets/Scenes/Level25.unity
-  playerPath: "C:/Users/Andew/Desktop/\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430/DinoBoy2.6.apk"
+  playerPath: "C:/Users/Andew/Desktop/\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430/DinoBoy2.7.apk"
