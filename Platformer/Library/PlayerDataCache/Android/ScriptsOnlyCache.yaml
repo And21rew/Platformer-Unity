@@ -2049,6 +2049,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
     - Class: 114
       Script: {instanceID: 11738}
     - Class: 114
@@ -2066,23 +2068,51 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12184}
     - Class: 114
+      Script: {instanceID: 12882}
+    - Class: 114
+      Script: {instanceID: 13410}
+    - Class: 114
       Script: {instanceID: 13534}
     - Class: 114
       Script: {instanceID: 13686}
     - Class: 114
+      Script: {instanceID: 13722}
+    - Class: 114
+      Script: {instanceID: 13784}
+    - Class: 114
+      Script: {instanceID: 13794}
+    - Class: 114
+      Script: {instanceID: 14076}
+    - Class: 114
+      Script: {instanceID: 14148}
+    - Class: 114
       Script: {instanceID: 14464}
+    - Class: 114
+      Script: {instanceID: 14850}
     - Class: 114
       Script: {instanceID: 15030}
     - Class: 114
       Script: {instanceID: 15126}
     - Class: 114
+      Script: {instanceID: 15172}
+    - Class: 114
+      Script: {instanceID: 15232}
+    - Class: 114
+      Script: {instanceID: 15610}
+    - Class: 114
       Script: {instanceID: 15624}
     - Class: 114
       Script: {instanceID: 15760}
     - Class: 114
+      Script: {instanceID: 15818}
+    - Class: 114
       Script: {instanceID: 16216}
     - Class: 114
+      Script: {instanceID: 16458}
+    - Class: 114
       Script: {instanceID: 16462}
+    - Class: 114
+      Script: {instanceID: 16524}
     - Class: 114
       Script: {instanceID: 16562}
     - Class: 115
@@ -2102,6 +2132,8 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 251
       Script: {instanceID: 0}
     Assets/Scenes/Level24.unity:
     - Class: 1
@@ -5876,6 +5908,12 @@ ScriptsOnlyBuild:
     assemblyName: Fungus.dll
     namespaceName: Fungus
     className: MoveLean
+  - hash:
+      serializedVersion: 2
+      Hash: 0d85f4fda1e0e70cd92c084d12f05cdc
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CameraToObject
   platform: 13
   scenePathNames:
   - Assets/Scenes/Menu.unity
@@ -5905,4 +5943,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Level23.unity
   - Assets/Scenes/Level24.unity
   - Assets/Scenes/Level25.unity
-  playerPath: "C:/Users/Andew/Desktop/\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430/DinoBoy2.9.apk"
+  playerPath: "C:/Users/Andew/Desktop/\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430/DinoBoy3.0.apk"
