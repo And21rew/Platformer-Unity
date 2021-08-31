@@ -53,7 +53,7 @@ public class Menu : MonoBehaviour
             PlayerPrefs.SetInt("musicvolume", 5);
 
         if (!PlayerPrefs.HasKey("soundvolume"))
-            PlayerPrefs.SetInt("soundvolume", 10);
+            PlayerPrefs.SetInt("soundvolume", 5);
 
         if (!PlayerPrefs.HasKey("dino1"))
         {
