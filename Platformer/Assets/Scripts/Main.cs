@@ -14,6 +14,7 @@ public class Main : MonoBehaviour
 
     private void Start()
     {
+        Application.targetFrameRate = PlayerPrefs.GetInt("fps");
         allCoins = GameObject.FindGameObjectsWithTag("Coin").Length;
     }
     
