@@ -16,6 +16,7 @@ TagManager:
   - GreenGem
   - MovePlatform
   - WallGround
+  - DamageStone
   layers:
   - Default
   - TransparentFX
