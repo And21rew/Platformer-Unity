@@ -106,6 +106,9 @@ public class Menu : MonoBehaviour
         else if (PlayerPrefs.GetInt("jump") == 2)
             doublejump.interactable = false;
 
+        if (!PlayerPrefs.HasKey("gameover"))
+            PlayerPrefs.SetInt("gameover", 0);
+
         if (PlayerPrefs.GetInt("gameover") == 1)
         {
             final.GetComponent<Image>().sprite = gameover;

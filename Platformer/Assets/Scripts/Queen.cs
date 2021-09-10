@@ -23,31 +23,33 @@ public class Queen : MonoBehaviour
         RaycastHit2D LeftWallInfo = Physics2D.Raycast(LeftWallCheck.position, Vector2.left, 0.1f);
         RaycastHit2D RightWallInfo = Physics2D.Raycast(RightWallCheck.position, Vector2.right, 0.1f);
 
-        if (moveLeft && canGo)
+        if (health > 0)
         {
-            AnimationQueen.SetInteger("State", 2);
-            transform.Translate(speed * Time.deltaTime * Vector2.left);
-
-            if (LeftWallInfo.collider.CompareTag("WallGround"))
+            if (moveLeft && canGo)
             {
-                moveLeft = false;
-                StartCoroutine(WaitGo());
+                AnimationQueen.SetInteger("State", 2);
+                transform.Translate(speed * Time.deltaTime * Vector2.left);
+
+                if (LeftWallInfo.collider.CompareTag("WallGround"))
+                {
+                    moveLeft = false;
+                    StartCoroutine(WaitGo());
+                }
+            }
+
+            if (!moveLeft && canGo)
+            {
+                AnimationQueen.SetInteger("State", 2);
+                transform.Translate(speed * Time.deltaTime * Vector2.right);
+
+                if (RightWallInfo.collider.CompareTag("WallGround"))
+                {
+                    moveLeft = true;
+                    StartCoroutine(WaitGo());
+                }
             }
         }
-
-        if (!moveLeft && canGo)
-        {
-            AnimationQueen.SetInteger("State", 2);
-            transform.Translate(speed * Time.deltaTime * Vector2.right);
-            
-            if (RightWallInfo.collider.CompareTag("WallGround"))
-            {
-                moveLeft = true;
-                StartCoroutine(WaitGo());
-            }
-        }
-
-        if (health <= 0)
+        else
         {
             canGo = false;
             AnimationQueen.SetInteger("State", 3);

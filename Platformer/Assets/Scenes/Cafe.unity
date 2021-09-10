@@ -22925,7 +22925,7 @@ MonoBehaviour:
   bluegm: {fileID: 1252908719}
   greengm: {fileID: 1267765094}
   doublejump: {fileID: 769273170}
-  final: {fileID: 0}
+  final: {fileID: 1922952245}
   coinText: {fileID: 1823555693}
   heartText: {fileID: 534326907}
   bluegemText: {fileID: 2041976645}
