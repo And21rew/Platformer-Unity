@@ -6102,7 +6102,7 @@ ScriptsOnlyBuild:
     className: Collision2DProperty
   - hash:
       serializedVersion: 2
-      Hash: d789baf8c0130686c9ccd42d0ccb139f
+      Hash: 42b1c79dc9a80b22c3a3c7027dfc903e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Menu

@@ -11,6 +11,7 @@ public class FinishFinal4loc : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerPrefs.SetInt("final", 0);
+            PlayerPrefs.SetInt("gameover", 1);
             main.Win();
         }
     }

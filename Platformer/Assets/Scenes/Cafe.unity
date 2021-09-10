@@ -22925,6 +22925,7 @@ MonoBehaviour:
   bluegm: {fileID: 1252908719}
   greengm: {fileID: 1267765094}
   doublejump: {fileID: 769273170}
+  final: {fileID: 0}
   coinText: {fileID: 1823555693}
   heartText: {fileID: 534326907}
   bluegemText: {fileID: 2041976645}
@@ -22939,6 +22940,7 @@ MonoBehaviour:
   dino4Lib: {fileID: 2088677925}
   dino5Lib: {fileID: 1743900816}
   dino6Lib: {fileID: 1015542668}
+  gameover: {fileID: 21300000, guid: ecc03f7b94d724c4db6266a31a3508da, type: 3}
 --- !u!114 &1823360418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24583,7 +24585,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.93000007, y: 0.8766667}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1, y: 2.000061}
+  m_AnchoredPosition: {x: 1, y: 2}
   m_SizeDelta: {x: 6852, y: 6852}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1938624716

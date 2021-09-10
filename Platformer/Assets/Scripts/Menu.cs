@@ -8,9 +8,11 @@ public class Menu : MonoBehaviour
 {
     public UnityEngine.UI.Button[] lvls;
     public UnityEngine.UI.Button heart, bluegm, greengm, doublejump;
+    public UnityEngine.UI.Button final;
     public Text coinText, heartText, bluegemText, greengemText;
     public int maxCountBonus = 5;
     public UnityEngine.UI.Button dino1, dino2, dino3, dino1Lib, dino2Lib, dino3Lib, dino4Lib, dino5Lib, dino6Lib;
+    public Sprite gameover;
 
     void Start()
     {
@@ -103,6 +105,11 @@ public class Menu : MonoBehaviour
             doublejump.interactable = true;
         else if (PlayerPrefs.GetInt("jump") == 2)
             doublejump.interactable = false;
+
+        if (PlayerPrefs.GetInt("gameover") == 1)
+        {
+            final.GetComponent<Image>().sprite = gameover;
+        }
     }
 
     void Update()

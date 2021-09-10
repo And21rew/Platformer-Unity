@@ -20,6 +20,9 @@ public class FirstMenu : MonoBehaviour
 
         if (!PlayerPrefs.HasKey("final"))
             PlayerPrefs.SetInt("final", 0);
+
+        if (!PlayerPrefs.HasKey("gameover"))
+            PlayerPrefs.SetInt("gameover", 0);
     }
 
     public void OpenSceneCafe()
