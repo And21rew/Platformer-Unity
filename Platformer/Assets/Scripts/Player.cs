@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     private int jumpsValue;
     private int jumps;
     public Joystick joystick;
+    public Camera1 Camera1;
 
     void Start()
     {
@@ -37,6 +38,8 @@ public class Player : MonoBehaviour
         curHp = maxHP;
         jumps = 1;
         jumpsValue = PlayerPrefs.GetInt("jump");
+        main = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Main>();
+        Camera1 = main.gameObject.GetComponent<Camera1>();
     }
 
     void Update()
@@ -217,6 +220,11 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("QueenCam"))
+        {
+            Camera1.check = true;
+        }
+
         if (collision.gameObject.CompareTag("Key"))
         {
             Destroy(collision.gameObject);

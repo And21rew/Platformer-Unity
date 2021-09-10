@@ -17,6 +17,7 @@ TagManager:
   - MovePlatform
   - WallGround
   - DamageStone
+  - QueenCam
   layers:
   - Default
   - TransparentFX
