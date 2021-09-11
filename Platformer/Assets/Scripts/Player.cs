@@ -223,6 +223,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("QueenCam"))
         {
             Camera1.check = true;
+            collision.gameObject.SetActive(false);
         }
 
         if (collision.gameObject.CompareTag("Key"))

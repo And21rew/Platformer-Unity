@@ -20,8 +20,8 @@ public class Camera1 : MonoBehaviour
         {
             Vector3 position = queen.position;
             position.z = transform.position.z;
-            //transform.position = Vector3.Lerp(transform.position, position, speed * Time.deltaTime);
             transform.position = position;
+            StartCoroutine(BackToPlayer());
         }
         else 
         {
@@ -29,5 +29,11 @@ public class Camera1 : MonoBehaviour
             position.z = transform.position.z;
             transform.position = Vector3.Lerp(transform.position, position, speed * Time.deltaTime); 
         }
+    }
+
+    IEnumerator BackToPlayer()
+    {
+        yield return new WaitForSeconds(3f);
+        check = false;
     }
 }
