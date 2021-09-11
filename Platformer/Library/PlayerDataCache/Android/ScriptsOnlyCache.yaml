@@ -5778,7 +5778,7 @@ ScriptsOnlyBuild:
     className: StopFlowchart
   - hash:
       serializedVersion: 2
-      Hash: 7ccf6b08f5d603a0e3ebcda80bebf534
+      Hash: 8e18a70cd2e9bf5071e15f96cf844d9b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -6060,7 +6060,7 @@ ScriptsOnlyBuild:
     className: MoveAdd
   - hash:
       serializedVersion: 2
-      Hash: 0d85f4fda1e0e70cd92c084d12f05cdc
+      Hash: 08a523aeca485fbc1469f4d109ada4de
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Camera1
