@@ -12602,6 +12602,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 357285515}
+  queen: {fileID: 0}
+  check: 0
 --- !u!81 &305101326
 AudioListener:
   m_ObjectHideFlags: 0
@@ -58408,6 +58410,10 @@ PrefabInstance:
     - target: {fileID: 6302792166115981798, guid: 7d51560a9efa9b0408700a56135c68fa, type: 3}
       propertyPath: m_LocalPosition.y
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302792166473308345, guid: 7d51560a9efa9b0408700a56135c68fa, type: 3}
+      propertyPath: speed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6302792166473308347, guid: 7d51560a9efa9b0408700a56135c68fa, type: 3}
       propertyPath: m_LocalPosition.y
