@@ -20,6 +20,7 @@ public class Main : MonoBehaviour
     
     public void ReloadLevel()
     {
+        PlayerPrefs.SetInt("cafe", 1);
         Time.timeScale = 1f;
         player.enabled = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -60,7 +61,7 @@ public class Main : MonoBehaviour
         WinScreen.SetActive(true);
 
         if (!PlayerPrefs.HasKey("Lvl") || PlayerPrefs.GetInt("Lvl") < SceneManager.GetActiveScene().buildIndex)
-            PlayerPrefs.SetInt("Lvl", SceneManager.GetActiveScene().buildIndex - 1);
+            PlayerPrefs.SetInt("Lvl", SceneManager.GetActiveScene().buildIndex);
 
         if (PlayerPrefs.HasKey("coins"))
             PlayerPrefs.SetInt("coins", PlayerPrefs.GetInt("coins") + player.GetCoins());
@@ -91,6 +92,7 @@ public class Main : MonoBehaviour
         Time.timeScale = 1f;
         player.enabled = true;
         SceneManager.LoadScene("Cafe");
+        PlayerPrefs.SetInt("cafe", 1);
     }
 
     public void NextLevel()
@@ -98,5 +100,11 @@ public class Main : MonoBehaviour
         Time.timeScale = 1f;
         player.enabled = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        PlayerPrefs.SetInt("cafe", 1);
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        PlayerPrefs.SetInt("cafe", 0);
     }
 }

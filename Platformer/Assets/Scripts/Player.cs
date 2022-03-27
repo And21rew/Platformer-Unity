@@ -31,6 +31,9 @@ public class Player : MonoBehaviour
     public Joystick joystick;
     public Camera1 Camera1;
 
+    //public InterAd interAd;
+    public AdsCore adsCore;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -187,6 +190,8 @@ public class Player : MonoBehaviour
 
         if (curHp <= 0)
         {
+            adsCore.GetComponent<AdsCore>().ShowAd();
+            //interAd.ShowAd();
             GetComponent<CapsuleCollider2D>().enabled = false;
             Invoke(nameof(Lose), 1.5f);
         }

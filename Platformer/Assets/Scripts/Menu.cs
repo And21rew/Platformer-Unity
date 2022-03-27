@@ -164,13 +164,13 @@ public class Menu : MonoBehaviour
     public void OpenSceneFinal()
     {
         if (PlayerPrefs.GetInt("final") == 0)
-            SceneManager.LoadScene(26);
+            SceneManager.LoadScene(25);
         else if (PlayerPrefs.GetInt("final") == 1)
-            SceneManager.LoadScene(27);
+            SceneManager.LoadScene(26);
         else if (PlayerPrefs.GetInt("final") == 2)
-            SceneManager.LoadScene(28);
+            SceneManager.LoadScene(27);
         else if (PlayerPrefs.GetInt("final") == 3)
-            SceneManager.LoadScene(29);
+            SceneManager.LoadScene(28);
     }
 
     public void DelKeys()
