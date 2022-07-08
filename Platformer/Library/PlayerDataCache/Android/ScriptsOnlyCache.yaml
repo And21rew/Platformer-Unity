@@ -82,6 +82,8 @@ ScriptsOnlyBuild:
     - Fungus.Writer
     - Fungus.WriterAudio
     FungusEditor.dll:
+    - Fungus.EditorUtils.BlockEditor
+    - Fungus.EditorUtils.BlockInspector
     - Fungus.EditorUtils.FlowchartWindow
     - Fungus.EditorUtils.FungusEditorResources
     GoogleMobileAds.Editor.dll:
@@ -90,6 +92,7 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridBrush
+    - UnityEditor.Tilemaps.GridBrushEditor
     - UnityEditor.Tilemaps.GridPaintPaletteClipboard
     - UnityEditor.Tilemaps.GridPaintPaletteWindow
     - UnityEditor.Tilemaps.GridPaintingState
@@ -6636,4 +6639,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Level25 (2loc).unity
   - Assets/Scenes/Level25 (3loc).unity
   - Assets/Scenes/Level25 (4loc).unity
-  playerPath: C:/Users/Andrew/Documents/GitHub/Platformer-Unity/DinoBoy1.20.aab
+  playerPath: C:/Users/Andrew/Documents/GitHub/Platformer-Unity/Builds/Google Play/DinoBoy1.21.aab
